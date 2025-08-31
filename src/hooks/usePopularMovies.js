@@ -13,7 +13,6 @@ const usePopularMovies = () => {
   const popularMovies = useSelector((store) => store.movies.popularMovies);
 
 
-  console.log(popularMovies)
   // Fetch Data
   const getPopularMovies = async () => {
     const data = await fetch(

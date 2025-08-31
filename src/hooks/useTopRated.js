@@ -13,7 +13,6 @@ const useTopRated = () => {
   const topRated = useSelector((store) => store.movies.TopRated);
 
 
-  console.log(topRated)
   // Fetch Data
   const getTopRated = async () => {
     const data = await fetch(

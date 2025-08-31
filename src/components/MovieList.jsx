@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 const MovieList = ({ title, movies }) => {
   if (!movies) return null;
 
-  console.log(movies);
+
 
   return (
     <div className="py-1 px-2 h-auto">

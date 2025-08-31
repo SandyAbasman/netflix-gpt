@@ -10,6 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BG_url } from "../utils/constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -96,10 +97,7 @@ const Login = () => {
     <div className="overflow-hidden">
       <Header />
       <div className="absolute">
-        <img
-          alt="logo"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/7d2359a4-434f-4efa-9ff3-e9d38a8bde7f/web/GB-en-20250707-TRIFECTA-perspective_34ffe37e-49d5-4f26-89ef-9d197202348e_large.jpg"
-        />
+        <img alt="logo" src={BG_url} />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
