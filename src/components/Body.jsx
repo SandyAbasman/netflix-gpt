@@ -41,7 +41,7 @@ export const Body = () => {
   }, []);
 
   return (
-    <div className="w-screen  h-screen">
+    <div className="w-full min-h-screen overflow-x-hidden">
       <RouterProvider router={appRouter} />
     </div>
   );
