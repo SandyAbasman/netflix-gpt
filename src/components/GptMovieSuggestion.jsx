@@ -3,14 +3,11 @@ import MovieList from "./movieList";
 import { toggleGptSuggestion } from "../utils/gptSlice";
 
 export const GptMovieSuggestion = () => {
-  const { movieResults, movieNames} = useSelector(
-    (store) => store.gpt
-  );
+  const { movieResults, movieNames } = useSelector((store) => store.gpt);
   const dispatch = useDispatch();
 
-  
   if (!movieNames || !movieResults) {
-    return;
+    return null;
   }
 
   const handleShowGptSuggestion = () => {
@@ -18,20 +15,20 @@ export const GptMovieSuggestion = () => {
   };
 
   return (
-    <div className="p-4 w-full bg-black/70 my-4">
+    <div className="p-2 md:p-4 w-full bg-black/90 md:bg-black/70 my-2 md:my-4 rounded-lg md:rounded-none">
       <div
         onClick={handleShowGptSuggestion}
-        className="text-white hover:underline cursor-pointer px-4 flex justify-end"
+        className="text-white hover:underline cursor-pointer px-2 md:px-4 py-2 flex justify-end items-center"
       >
-        <p>Close X</p>
+        <p className="text-sm md:text-base bg-red-700 rounded-full w-6 h-6 flex items-center justify-center">
+          ×
+        </p>
       </div>
-      <div>
-        {movieNames.map((movieNames, index) => (
-          <MovieList
-            key={movieNames}
-            title={movieNames}
-            movies={movieResults[index]}
-          />
+      <div className="max-h-[70vh] overflow-y-auto">
+        {movieNames.map((movieName, index) => (
+          <div key={movieName} className="mb-4 last:mb-0">
+            <MovieList title={movieName} movies={movieResults[index]} />
+          </div>
         ))}
       </div>
     </div>
