@@ -23,3 +23,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifer: "dutch", name: "Dutch" },
   { identifer: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_KEY =
+  "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";
