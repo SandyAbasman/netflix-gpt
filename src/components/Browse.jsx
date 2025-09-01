@@ -5,7 +5,7 @@ import useTopRated from "../hooks/useTopRated";
 import GptSearch from "./GptSearch";
 import Header from "./Header";
 import { MainContainer } from "./MainContainer";
-import SecondaryContainer from "./secondaryContainer";
+import SecondaryContainer from "./SecondaryContainer2";
 
 const Browse = () => {
   useNowPlayingMovies();
