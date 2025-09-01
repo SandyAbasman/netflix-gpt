@@ -25,6 +25,6 @@ firebase.js
 *.sln
 *.sw?
 
-.env
+*.env
 
 .gitignore
