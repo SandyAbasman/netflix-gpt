@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import MovieList from "./movieList";
+import MovieList from "./MovieList2";
 import { toggleGptSuggestion } from "../utils/gptSlice";
 
 export const GptMovieSuggestion = () => {
