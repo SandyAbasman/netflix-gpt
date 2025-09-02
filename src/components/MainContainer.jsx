@@ -5,13 +5,16 @@ import VideoTitle from "./VideoTitle";
 export const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
 
-  if (!movies) return null;
+  if (!movies || movies.length === 0) return null;
 
   const mainMovie = movies[0];
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className="w-full h-[42.25vw] min-h-[100px] md:min-h-[100px] lg:min-h-[200px] relative overflow-hidden">
+    <div
+      className="w-full relative overflow-hidden 
+                    h-[50vh] md:h-[60vh] lg:h-[42.25vw] min-h-[200px]"
+    >
       <VideoBackground movieId={id} />
       <VideoTitle title={original_title} overview={overview} />
     </div>

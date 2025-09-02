@@ -5,26 +5,28 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const MovieList = ({ title, movies }) => {
-  if (!movies) return null;
+  if (!movies || movies.length === 0) return null;
 
   return (
-    <div className="py-1 md:py-4 px-2 md:px-4">
-      <h1 className="text-xl md:text-2xl lg:text-3xl text-white py-2 md:py-4 font-bold">
+    <div className="py-2 md:py-4 px-2 md:px-6">
+      <h1 className="text-lg md:text-2xl lg:text-3xl text-white py-2 font-bold">
         {title}
       </h1>
 
       <Swiper
         modules={[Navigation]}
         navigation
-        spaceBetween={0}
-        slidesPerView={2}
+        spaceBetween={0} // default space between slides
+        slidesPerView={4} // default for mobile
         breakpoints={{
-          640: { slidesPerView: 3, spaceBetween: 4 },
-          768: { slidesPerView: 4, spaceBetween: 5 },
-          1024: { slidesPerView: 5, spaceBetween: 6 },
-          1280: { slidesPerView: 6, spaceBetween: 6 },
+          480: { slidesPerView: 2, spaceBetween: 8 },
+          640: { slidesPerView: 3, spaceBetween: 10 },
+          768: { slidesPerView: 4, spaceBetween: 12 },
+          1024: { slidesPerView: 5, spaceBetween: 16 },
+          1280: { slidesPerView: 6, spaceBetween: 18 },
+          1536: { slidesPerView: 7, spaceBetween: 20 },
         }}
-        className="pb-6 custom-swiper"
+        className="pb-6"
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>

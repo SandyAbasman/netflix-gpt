@@ -94,7 +94,7 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen ">
       <Header />
       {/* Background Image */}
       <div className="fixed inset-0 -z-10">
@@ -105,7 +105,7 @@ const Login = () => {
       {/* Login Form */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-full sm:w-10/12 md:w-8/12 lg:w-4/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-6 sm:p-8 md:p-12 bg-black text-white rounded-lg bg-opacity-80 mx-4"
+        className="w-full sm:w-10/12 md:w-8/12 lg:w-4/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-6 sm:p-8 md:p-12 bg-black text-white rounded-lg bg-opacity-80 mx-2"
       >
         <h1 className="font-bold text-2xl sm:text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}

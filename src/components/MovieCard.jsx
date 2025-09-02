@@ -4,13 +4,12 @@ import { IMG_CDN } from "../utils/constant";
 function MovieCard({ posterPath, movieID }) {
   const navigate = useNavigate();
 
-  if (!posterPath) {
-    return null;
-  }
+  if (!posterPath) return null;
+
   return (
     <div
       onClick={() => navigate(`/movie/${movieID}`)}
-      className="pr-2 md:pr-4 cursor-pointer w-[8rem] sm:w-[9rem] md:w-[10rem] lg:w-[11rem] xl:w-[12rem] flex-shrink-0"
+      className="cursor-pointer flex-shrink-0 w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 pr-2 md:pr-3"
     >
       <img
         alt="movieCard"
