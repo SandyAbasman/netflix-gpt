@@ -40,11 +40,17 @@ const Header = () => {
   return (
     <div className="fixed w-full px-4 md:px-8 flex justify-between items-center py-2 bg-gradient-to-b from-black z-50">
       {/* Logo */}
-      <img
-        className="w-32 md:w-44"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        alt="logo"
-      />
+      <div className="flex relative justify-center items-center">
+        <img
+          className="w-32 md:w-44"
+          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+          alt="logo"
+        />
+
+        <p className="text-white hidden lg:block lg:left-40 absolute text-5xl font-semibold">
+          GPT
+        </p>
+      </div>
 
       {user && (
         <>
@@ -71,13 +77,35 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-2 items-center">
+            <img
+              className="w-8 h-8 rounded-full"
+              src={
+                user?.photoURL
+                  ? user?.photoURL
+                  : "https://avatars.githubusercontent.com/u/74963378?v=4"
+              }
+              alt="user icon"
+            />
+
             <p className="text-white font-bold text-sm lg:text-base">
               {user.displayName}
             </p>
 
+            <button
+              onClick={handleGptSearchClick}
+              className="  flex items-center gap-2 
+                   px-3 py-2 rounded-full backdrop-blur-md bg-white/20 
+                   border border-white/30 text-red-100 hover:bg-white/30 transition"
+            >
+              {!showGptSearch ? "GPT Search" : "Homepage"}
+            </button>
+
             {showGptSearch && (
               <select
-                className="bg-black p-2 rounded-md text-white text-sm"
+                className="  flex items-center gap-2 
+                   px-3 py-2 rounded-full border-r-8 text-red-700
+                    backdrop-blur-md bg-white/20 
+                   border border-white/0  hover:bg-white/30 transition"
                 onChange={handleLanguageChange}
               >
                 {SUPPORTED_LANGUAGES.map((lang) => (
@@ -87,23 +115,6 @@ const Header = () => {
                 ))}
               </select>
             )}
-
-            <button
-              onClick={handleGptSearchClick}
-              className="bg-purple-500 p-2 rounded-md text-white mx-2 text-sm"
-            >
-              {!showGptSearch ? "GPT Search" : "Homepage"}
-            </button>
-
-            <img
-              className="w-6 h-6 rounded-full"
-              src={
-                user?.photoURL
-                  ? user?.photoURL
-                  : "https://avatars.githubusercontent.com/u/74963378?v=4"
-              }
-              alt="user icon"
-            />
 
             <button
               onClick={handleSignOut}

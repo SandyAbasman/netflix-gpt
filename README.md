@@ -51,3 +51,10 @@ It allows users to sign up, log in, browse movies, watch trailers, and get **AI-
    git clone https://github.com/your-username/netflix-gpt.git
    cd netflix-gpt
    ```
+
+
+todo:
+detail routing 
+carousels
+hosting 
+

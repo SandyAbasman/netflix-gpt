@@ -11,7 +11,7 @@ export const MainContainer = () => {
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className="w-full h-[56.25vw] min-h-[400px] md:min-h-[500px] lg:min-h-[600px] relative overflow-hidden">
+    <div className="w-full h-[42.25vw] min-h-[100px] md:min-h-[100px] lg:min-h-[200px] relative overflow-hidden">
       <VideoBackground movieId={id} />
       <VideoTitle title={original_title} overview={overview} />
     </div>

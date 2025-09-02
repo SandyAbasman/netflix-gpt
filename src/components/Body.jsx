@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router";
 import Browse from "./Browse";
 import Login from "./Login";
-import { RouterProvider } from "react-router";
+import { RouterProvider } from "react-router-dom";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
+import MovieDetails from "./MovieDetails";
 
 export const Body = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ export const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/movie/:id",
+      element: <MovieDetails />,
     },
   ]);
 
@@ -41,7 +46,7 @@ export const Body = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen overflow-x-hidden">
+    <div className="w-full min-h-screen overflow-hidden">
       <RouterProvider router={appRouter} />
     </div>
   );

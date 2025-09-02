@@ -10,7 +10,7 @@ const GptSearchBar = () => {
   const language = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
 
-  //search movie in TMDB
+  // search movie in TMDB
   const searchMovieTMDB = async (movie) => {
     const data = await fetch(
       "https://api.themoviedb.org/3/search/movie?query=" +
@@ -21,12 +21,10 @@ const GptSearchBar = () => {
 
     dispatch(setLoading(false));
     const json = await data.json();
-
     return json.results;
   };
 
   const handleGptSearchClick = async () => {
-    //make an api to open api and get result
     dispatch(setLoading(true));
 
     const gptQuery = `act as a movie recommendation system based on the query: ${searchText.current.value}, don't recommend the same movies every time. Only give me names of 5 movies, comma separated like the example result given ahead. Example result: Sholay, Money Heist, Rambo, Snake in the Monkey Shadow, Death Role`;
@@ -37,18 +35,14 @@ const GptSearchBar = () => {
     });
 
     if (!gptResult.choices) {
-      //handle error
+      // handle error
     }
 
     console.log(gptResult.choices[0].message.content);
 
-    //convert the movies to an array
     const gptMovies = gptResult.choices[0]?.message?.content.split(",");
 
-    //for each movie, search tmdb api
     const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
-    ///[Promise,Promise,Promise,Promise]
-
     const tmdbResults = await Promise.all(promiseArray);
 
     console.log(tmdbResults);
@@ -62,18 +56,20 @@ const GptSearchBar = () => {
     <div className="flex pt-[30%] md:pt-[8%] px-4 justify-center items-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-full md:w-3/4 lg:w-1/2 bg-black/70 md:bg-black/50 py-2 px-4 rounded-md gap-2 flex flex-col sm:flex-row"
+        className="w-full md:w-3/4 lg:w-1/2 flex flex-col sm:flex-row items-center gap-2 
+                   lg:px-3 px-6 py-3 rounded-lg lg:rounded-full backdrop-blur-md bg-white/20 
+                   border border-white/30 text-white hover:bg-white/30 transition"
       >
         <input
           ref={searchText}
           type="text"
-          className="py-3 px-4 w-full rounded mb-2 sm:mb-0"
+          className="py-2 px-4 w-full text-black rounded-full focus:outline-none"
           placeholder={lang[language].gptSearchPlaceholder}
         />
         <button
           type="submit"
           onClick={handleGptSearchClick}
-          className="bg-red-700 py-3 sm:py-1 capitalize px-6 sm:px-10 font-bold rounded-md text-white whitespace-nowrap"
+          className="bg-red-700 py-2 px-6 font-bold rounded-full text-white whitespace-nowrap w-1/2 sm:w-auto"
         >
           {lang[language].search}
         </button>
